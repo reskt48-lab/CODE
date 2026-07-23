@@ -32,6 +32,20 @@ def tampilkan_menu():
     print("0. Keluar")
 
 
+def tanya_lanjut_atau_kembali():
+    """Menanyakan apakah user mau ulangi menu yang sama (y) atau kembali ke menu utama (n).
+    Return True kalau mau ulangi (y), False kalau mau kembali ke menu utama (n)."""
+    while True:
+        jawaban = input("\nUlangi menu ini? (y/n): ").lower()
+        
+        if jawaban == "y":
+            return True
+        elif jawaban == "n":
+            return False
+        else:
+            print("Input tidak valid! Ketik 'y' atau 'n'.")
+
+
 def main():
     while True:
         tampilkan_menu()
@@ -39,11 +53,20 @@ def main():
         
         try:
             if pilihan == "1":
-                cek_genap_ganjil()
+                while True:
+                    cek_genap_ganjil()
+                    if not tanya_lanjut_atau_kembali():
+                        break
             elif pilihan == "2":
-                konversi_suhu()
+                while True:
+                    konversi_suhu()
+                    if not tanya_lanjut_atau_kembali():
+                        break
             elif pilihan == "3":
-                hitung_luas_keliling_persegi()
+                while True:
+                    hitung_luas_keliling_persegi()
+                    if not tanya_lanjut_atau_kembali():
+                        break
             elif pilihan == "0":
                 print("Program selesai. Sampai jumpa!")
                 break
